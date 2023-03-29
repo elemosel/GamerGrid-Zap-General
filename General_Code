@@ -2,6 +2,11 @@ import re
 from io import StringIO
 import csv
 
+import uuid
+
+# Generate a random UUID
+unique_id = uuid.uuid4()
+
 urlText = input_data['urlText']
 date = input_data["date"]
 inputText = input_data["Text"]
@@ -49,7 +54,7 @@ date = date.replace(':', '-')
 
 date = date.replace(' ', '+')
 
-output = {"date": date, "urls": urls, "icons": icons}
+output = {"uuid": unique_id, "date": date, "urls": urls, "icons": icons}
 
 
 for key,value in output.items():
