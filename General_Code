@@ -7,7 +7,7 @@ date = input_data["date"]
 inputText = input_data["Text"]
 
 icons = []
-inputTextUp = input_data["Text"].upper()
+inputTextUp = inputText.upper()
 
 blueIcon = ":large_blue_square:"
 greenIcon = ":large_green_square:"
@@ -16,22 +16,22 @@ purpleIcon = ":large_purple_square:"
 blackIcon = ":black_large_square:"
 
 
-if "Playstation".upper() in input_data["Text"].upper().upper(): 
+if "Playstation".upper() in inputTextUp: 
         icons.append(blueIcon)
         
-if "Xbox".upper() in input_data["Text"].upper().upper():
+if "Xbox".upper() in inputTextUp:
         icons.append(greenIcon)
         
-if "Nintendo".upper() in input_data["Text"].upper().upper():
+if "Nintendo".upper() in inputTextUp:
         icons.append(redIcon)
 
-if "PC".upper() in input_data["Text"].upper().upper():
+if "PC".upper() in inputTextUp:
         icons.append(blackIcon)
 
-if "Mobile".upper() in input_data["Text"].upper().upper():
+if "Mobile".upper() in inputTextUp:
         icons.append(purpleIcon)
     
-if all(substring.upper() not in input_data["Text"].upper().upper() for substring in ["PC", "Mobile", "Nintendo", "Xbox", "Playstation"]):
+if all(substring.upper() not in inputTextUp for substring in ["PC", "Mobile", "Nintendo", "Xbox", "Playstation"]):
     icons.append(blueIcon)
     icons.append(greenIcon)
     icons.append(redIcon)
