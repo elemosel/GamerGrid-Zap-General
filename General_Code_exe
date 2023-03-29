@@ -1,0 +1,68 @@
+import re
+from io import StringIO
+import csv
+
+#csvText = input_data['csvText']
+urlText = "https://cdn2.unrealengine.com/cmp-doombundledoomicorn-promoimage-1920x10800-1920x1080-bce5d7b664a7.png?resize=1&w=1288,https://cdn2.unrealengine.com/cmp-studio-lunarnewyear-promoimage-1920x10800-1920x1080-fec267f7bc25.png?resize=1&w=1091"
+date = "05/26/23 11:45PM"
+inputText = """Whether you prefer the nostalgic charm of 's classic 
+consoles or the cutting-edge graphics of 's latest releases, gaming 
+has something for everyone. From fast-paced action games to immersive role-playing 
+adventures, there's no shortage of entertainment to be found in the world of gaming."""
+
+#PlayStation
+#Nintendo
+
+#urlText = input_data['urlText']
+#date = input_data["data"]
+#inputText = input_data["Text"]
+
+icons = []
+inputTextUp = inputText.upper()
+
+blueIcon = ":large_blue_square:"
+greenIcon = ":large_green_square:"
+redIcon = ":large_red_square:"
+purpleIcon = ":large_purple_square:"
+blackIcon = ":black_large_square:"
+
+
+if "Playstation".upper() in inputTextUp: 
+        icons.append(blueIcon)
+        
+if "Xbox".upper() in inputTextUp:
+        icons.append(greenIcon)
+        
+if "Nintendo".upper() in inputTextUp:
+        icons.append(redIcon)
+
+if "PC".upper() in inputTextUp:
+        icons.append(blackIcon)
+
+if "Mobile".upper() in inputTextUp:
+        icons.append(purpleIcon)
+    
+if all(substring.upper() not in inputTextUp for substring in ["PC", "Mobile", "Nintendo", "Xbox", "Playstation"]):
+    icons.append(blueIcon)
+    icons.append(greenIcon)
+    icons.append(redIcon)
+    icons.append(blackIcon) 
+    icons.append(purpleIcon)
+
+
+urls = urlText.split(",")
+
+# Replace all occurrences of '/' with an date
+date = date.replace('/', '_')
+
+# Replace all occurrences of ':' with an date
+date = date.replace(':', '-')
+
+date = date.replace(' ', '+')
+
+output = {"date": date, "urls": urls, "icons": icons}
+
+
+for key,value in output.items():
+    value = ''.join(str(x) for x in value)
+    print("\n" + key + " => " + value )
