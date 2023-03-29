@@ -1,0 +1,57 @@
+import re
+from io import StringIO
+import csv
+
+urlText = input_data['urlText']
+date = input_data["date"]
+inputText = input_data["Text"]
+
+icons = []
+inputTextUp = inputText.upper()
+
+blueIcon = ":large_blue_square:"
+greenIcon = ":large_green_square:"
+redIcon = ":large_red_square:"
+purpleIcon = ":large_purple_square:"
+blackIcon = ":black_large_square:"
+
+
+if "Playstation".upper() in inputTextUp: 
+        icons.append(blueIcon)
+        
+if "Xbox".upper() in inputTextUp:
+        icons.append(greenIcon)
+        
+if "Nintendo".upper() in inputTextUp:
+        icons.append(redIcon)
+
+if "PC".upper() in inputTextUp:
+        icons.append(blackIcon)
+
+if "Mobile".upper() in inputTextUp:
+        icons.append(purpleIcon)
+    
+if all(substring.upper() not in inputTextUp for substring in ["PC", "Mobile", "Nintendo", "Xbox", "Playstation"]):
+    icons.append(blueIcon)
+    icons.append(greenIcon)
+    icons.append(redIcon)
+    icons.append(blackIcon) 
+    icons.append(purpleIcon)
+
+
+urls = urlText.split(",")
+
+# Replace all occurrences of '/' with an date
+date = date.replace('/', '_')
+
+# Replace all occurrences of ':' with an date
+date = date.replace(':', '-')
+
+date = date.replace(' ', '+')
+
+output = {"date": date, "urls": urls, "icons": icons}
+
+
+for key,value in output.items():
+    value = ''.join(str(x) for x in value)
+    print("\n" + key + " => " + value )
