@@ -27,22 +27,22 @@ purpleIcon = ":large_purple_square:"
 blackIcon = ":black_large_square:"
 
 
-if "Playstation".upper() in inputTextUp: 
+if "Playstation".upper() in inputText.upper(): 
         icons.append(blueIcon)
         
-if "Xbox".upper() in inputTextUp:
+if "Xbox".upper() in inputText.upper():
         icons.append(greenIcon)
         
-if "Nintendo".upper() in inputTextUp:
+if "Nintendo".upper() in inputText.upper():
         icons.append(redIcon)
 
-if "PC".upper() in inputTextUp:
+if "PC".upper() in inputText.upper():
         icons.append(blackIcon)
 
-if "Mobile".upper() in inputTextUp:
+if "Mobile".upper() in inputText.upper():
         icons.append(purpleIcon)
     
-if all(substring.upper() not in inputTextUp for substring in ["PC", "Mobile", "Nintendo", "Xbox", "Playstation"]):
+if all(substring.upper() not in inputText.upper() for substring in ["PC", "Mobile", "Nintendo", "Xbox", "Playstation"]):
     icons.append(blueIcon)
     icons.append(greenIcon)
     icons.append(redIcon)
