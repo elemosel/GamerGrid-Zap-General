@@ -58,5 +58,8 @@ output = {"uuid": unique_id, "date": date, "urls": urls, "icons": icons}
 
 
 for key,value in output.items():
-    value = ''.join(str(x) for x in value)
-    print("\n" + key + " => " + value )
+    if isinstance(value, uuid.UUID):
+        value = str(value)
+    else:
+        value = ''.join(str(x) for x in value)
+        print("\n" + key + " => " + value )
